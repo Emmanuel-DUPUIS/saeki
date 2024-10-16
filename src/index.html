@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SAEKI Web browser</title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+			height: 100vh;
+			display: flex;
+			flex-direction: row;
+		}
+		#infos {
+			flex-basis: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+		#viewport {
+			flex-basis: auto;
+			flex-grow: 1;
+			flex: left;
+		}
+	</style>
+	<script defer src="./dist/main.js"></script>
+	<body>
+	    
+		<div id="viewport" style="">
+		<div id="css" style="width: calc(100% - 350px);height: 100%;position: absolute;top: 0; left: 0; pointer-events: none"></div>
+		</div>
+		<div id="infos" style="width: 350px; height: 100%">
+			<div style="margin:10px; border-bottom: thin solid">
+			<label for="openFileLabel" title="Load Model" style="">Load Model from STEP or IGES file</label>
+			<input id="openFileInput" name="step-iges-file" type="file" accept=".iges,.step,.igs,.stp,.saeki" style="margin: 10px 0"/>
+			</div>
+			<div style="margin:10px; font-size: 10pt">
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 5px 0">
+				Number of faces
+				</p>
+				<input id="FaceNumberInput" type="text" value="" size="6" style="display: inline-block"/>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 100px; margin: 4px 0">
+				Bounding box
+				</p>
+				<p style="display: inline-block; width: 25px; margin: 4px 0; padding-left: 5px; text-align: right">
+				X
+				</p>
+				<input id="BBoxXInput" type="text" value="" size="16"/>
+				<p style="display: inline-block; margin: 4px 0;">m</p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 130px; margin: 4px 0; padding-left: 5px; text-align: right">
+				Y
+				</p>
+				<input id="BBoxYInput" type="text" value="" size="16"/>
+				<p style="display: inline-block; margin: 4px 0;">m</p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 130px; margin: 4px 0; padding-left: 5px; text-align: right">
+				Z
+				</p>
+				<input id="BBoxZInput" type="text" value="" size="16"/>
+				<p style="display: inline-block; margin: 4px 0;">m</p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 4px 0">
+				Volume
+				</p>
+				<input id="VolumeInput" type="text" value="" size="8"/>
+				<p style="display: inline-block; margin: 4px 0;">m<sup>3</sup></p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 4px 0">
+				Wet surface
+				</p>
+				<input id="WetSurfaceInput" type="text" value="" size="8"/>
+				<p style="display: inline-block; margin: 4px 0;">m<sup>2</sup></p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 4px 0">
+				Area of planar faces
+				</p>
+				<input id="AreaPlanarFacesInput" type="text" value="" size="16"/>
+				<p style="display: inline-block; margin: 4px 0;">m<sup>2</sup></p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 4px 0">
+				Minimum radius
+				</p>
+				<input id="MinimumRadiusInput" type="text" value="" size="8"/>
+				<p style="display: inline-block; margin: 4px 0;">mm</p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 135px; margin: 4px 0">
+				Length of sharp edges
+				</p>
+				<input id="LengthSharpEdgesInput" type="text" value="" size="16"/>
+				<p style="display: inline-block; margin: 4px 0;">m</p>
+				</div>
+				<div style="border-top: thin solid; margin-top: 15px; padding-top: 15px">
+				<p style="display: inline-block; width: 70px; margin: 4px 0">
+				Curvature
+				</p>
+				<p style="display: inline-block; width: 55px; margin: 4px 0; padding-left: 5px; text-align: right">
+				Minimum
+				</p>
+				<input id="MinCurvatureInput" type="text" value="" size="14"/>
+				<p style="display: inline-block; margin: 4px 0;">mm<sup>-1</sup>/mm</p>
+				</div>
+				<div>
+				<p style="display: inline-block; width: 130px; margin: 4px 0; padding-left: 5px; text-align: right">
+				Maximum
+				</p>
+				<input id="MaxCurvatureInput" type="text" value="" size="14"/>
+				<p style="display: inline-block; margin: 4px 0;">mm<sup>-1</sup>/mm</p>
+				</div>
+				<center><button id="deleteBtn" type="button" onclick="deleteAnnotations()" style="margin: 10px 0">Delete annotations</button></center>
+			</div>
+			<div style="border-bottom:thin solid"></div>
+			<div>
+			<center><button id="saveBtn" type="button" onclick="saveScene()">Save Scene</button></center>
+			</div>
+		</div
+	</body>
+</html>
